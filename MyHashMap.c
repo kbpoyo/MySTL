@@ -20,7 +20,11 @@ static long long hashFun(keyType key) {
 
  //默认键比较器
 static int cmpOfKey(keyType key1, keyType key2) {
-     return strcmp((char*)key1, (char*)key2);
+
+     if (key1 < key2) return -1;
+     if (key1 > key2) return 1;
+
+     return 0;
  }
 
  //默认值比较器
@@ -75,7 +79,7 @@ static hashNode* getPre(hash*myTable , keyType key) {
  }
 
  //得到节点数组
-static Entry* getNodes(hash* myTable) {
+static EntryOfHash* getNodes(hash* myTable) {
     if (myTable->getSize(myTable) == 0) return NULL;
 
     hashNodePtr* arr = (hashNodePtr *) malloc(sizeof (hashNodePtr)*myTable->getSize(myTable));
@@ -386,7 +390,7 @@ void destroy(hash** myTable) {
 //---------------------------------------------
 //获取迭代器所迭代的元素大小
  static int getEleSize() {
-    return sizeof (Entry);
+    return sizeof (EntryOfHash);
  }
 
 //获取迭代器

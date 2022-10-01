@@ -51,11 +51,23 @@ typedef struct a A;
  * MyHashMap
  */
 //-------------------------------
-//eleType 为 char* 类型和自定义类型， 或 keyType 为自定义类型时 需要重写函数 cmpOfKey, cmpOfValue, hashFun, printFun
+//char* 类型和自定义类型， 或 keyType 为自定义类型时 需要重写函数 cmpOfKey, cmpOfValue, hashFun, printFun
 #define CAPACITY 100
-#define keyType int //定义键值类型 ,默认为 char*
+#define keyType int //定义键值类型 ,默认为 int
 #define eleType int  //定义元素类型, 默认为 int
 //-------------------------------
+
+/**
+ * MyTreeMap
+ */
+//-------------------------------
+//char*类型 和 自定义类型需要重写函数 printFun , cmp
+#define keyTreeMap int //定义键值类型， 默认为 int
+#define eleTreeMap int //定义元素类型 默认为int
+
+//-------------------------------
+
+
 
 /**
  * MyHashSet

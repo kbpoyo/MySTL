@@ -19,7 +19,12 @@ typedef struct hashNode {
     keyType key;//键值
     eleType e;//存储元素
     struct hashNode* next; //后继
-}hashNode , *hashNodePtr, *Entry;
+}hashNode , *hashNodePtr;
+
+typedef struct entryOfHash {
+    keyType key;
+    eleType ele;
+} *EntryOfHash;
 //-----------------hashNode----------------------
 
 /**
@@ -28,7 +33,7 @@ typedef struct hashNode {
 typedef struct hash {
     //实现CommonStl接口
     Version* version;//记录容器版本
-    Entry*(*toArr)(struct hash*);
+    EntryOfHash*(*toArr)(struct hash*);
     int(*getSize)(struct hash*);
     int(*getEleSize)();
 

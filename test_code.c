@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"my_stl/MyStl.h"
+#include <time.h>
+#include"MyStl.h"
 
 
 typedef struct a {
@@ -37,6 +38,8 @@ void printInt(int a, int b) {
 
 int main() {
 
+    srand((unsigned int)time(NULL));
+
     A arr[20] = {{10, "d"},
                 {20, "f"},
                 {30, "a"},
@@ -62,37 +65,36 @@ int main() {
 
     char* arrStr[5] = {arr[0].name, arr[1].name, arr[2].name, arr[3].name, arr[4].name};
 
-   HashSet * queue = iniHashSet();
+   TreeMap* queue = iniTreeMap();
 
    int i;
-   for (i = 30; i > 0; i--) {
-       queue->add(queue,i);
-   }
+   for (i = 0; i < 50; i++) {
+       queue->put(queue, rand(), i + 1);
 
-   queue->add(queue, 110);
+   }
 
    queue->printAll(queue);
 
-   Iterator* iterator = queue->getIterator(queue);
 
+   Iterator * iterator = queue->getIterator(queue);
 
     while (iterator->hasNext(iterator)) {
-        int a = iterator->next(iterator);
-        printf("val = %d ", a);
-        printf("\n");
+        EntryOfTree en = iterator->next(iterator);
+        printf("%d == %d\n", en->key, en->ele);
     }
 
 
 
 
 
-
-
-
-
-
-
-
+//   Iterator* iterator = queue->getIterator(queue);
+//
+//
+//    while (iterator->hasNext(iterator)) {
+//        EntryOfTree a = iterator->next(iterator);
+//        queue->print(queue, a->key, a->ele);
+//        printf("\n");
+//    }
 
 
 	return 0;
