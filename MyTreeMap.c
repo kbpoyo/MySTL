@@ -149,6 +149,7 @@ static Node* minForNode(Node* node) {
        rst->color = RED;
        rst->N = 1;
        rst->left = rst->right = NULL;
+
        return rst;
      }
 
@@ -482,6 +483,7 @@ static int isEmpty(TreeMap* treeMap) {
 static void put(TreeMap* treeMap, keyTreeMap key, eleTreeMap ele) {
     treeMap->root = putForNode(treeMap, treeMap->root, key, ele);
     treeMap->root->color = BLACK;
+    changeVersion(treeMap);//改变容器版本
 }
 
 /**
@@ -535,7 +537,10 @@ static void deleteMin(TreeMap* treeMap) {
     if (!isRed(root->left) && !isRed(root->right)) root->color = RED ;//根节点为2-节点，所以要将其转换为3-节点，将其链接变为红链接
     root = deleteMinForNode(root);
     treeMap->root = root;
-    if (!isEmpty(treeMap)) treeMap->root->color = BLACK;
+    if (!isEmpty(treeMap))  {
+        treeMap->root->color = BLACK;
+        changeVersion(treeMap);//改变容器版本
+    }
 }
 
 /**
@@ -548,7 +553,10 @@ static void deleteMax(TreeMap* treeMap) {
     if (!isRed(root->left) && !isRed(root->right)) root->color = RED ;//根节点为2-节点，所以要将其转换为3-节点，将其链接变为红链接
     root = deleteMaxForNode(root);
     treeMap->root = root;
-    if (!isEmpty(treeMap)) treeMap->root->color = BLACK;
+    if (!isEmpty(treeMap)) {
+        treeMap->root->color = BLACK;
+        changeVersion(treeMap);//改变容器版本
+    }
 
 }
 
@@ -563,7 +571,10 @@ static void delete(TreeMap* treeMap, keyTreeMap key) {
     if (!isRed(root->left) && !isRed(root->right)) root->color = RED ;//根节点为2-节点，所以要将其转换为3-节点，将其链接变为红链接
     root = deleteForNode(treeMap, root, key);
     treeMap->root = root;
-    if (!isEmpty(treeMap)) treeMap->root->color = BLACK;
+    if (!isEmpty(treeMap)) {
+        treeMap->root->color = BLACK;
+        changeVersion(treeMap);//改变容器版本
+    }
 }
 
 /**
