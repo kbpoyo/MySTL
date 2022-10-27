@@ -59,9 +59,10 @@ static int isOrderlyForNode(TreeMap* treeMap, Node* node) {
     if (isOrderlyForNode(treeMap, node->left) && isOrderlyForNode(treeMap, node->right)) {
         if (node->left != NULL && treeMap->cmp(node->key, node->left->key) < 0) return 0;
         if (node->right != NULL && treeMap->cmp(node->key, node->right->key) > 0) return 0;
+        return 1;
     }
 
-    return 1;
+    return 0;
 }
 
 /**

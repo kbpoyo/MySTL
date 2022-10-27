@@ -68,20 +68,22 @@ int main() {
    TreeMap* queue = iniTreeMap();
 
    int i;
-   for (i = 0; i < 50; i++) {
+   for (i = 0; i < 50000; i++) {
        queue->put(queue, rand(), i + 1);
 
    }
 
-   queue->printAll(queue);
+    printf("删除前： size = %d, height = %d, blackHeight = %d, isOrderly = %d, osColorRule = %d\n", queue->getSize(queue), queue->getHeight(queue), queue->getBlackHeight(queue), queue->isOrderly(queue), queue->isColorRule(queue));
 
 
-   Iterator * iterator = queue->getIterator(queue);
 
-    while (iterator->hasNext(iterator)) {
-        EntryOfTree en = iterator->next(iterator);
-        printf("%d == %d\n", en->key, en->ele);
+    for (i = 0; i < 50000; i++) {
+        queue->delete(queue, rand());
     }
+
+
+    printf("删除前： size = %d, height = %d, blackHeight = %d, isOrderly = %d, osColorRule = %d\n", queue->getSize(queue), queue->getHeight(queue), queue->getBlackHeight(queue), queue->isOrderly(queue), queue->isColorRule(queue));
+
 
 
 
