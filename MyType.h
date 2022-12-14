@@ -11,8 +11,10 @@
  *自定义类型声明区
  */
 //--------Custom type declaration area------------------------
-extern struct a;
-typedef struct a A;
+extern struct car;
+typedef struct car car;
+extern struct Huffman;
+typedef struct Huffman Huffman;
 //--------Custom type declaration area------------------------
 
 
@@ -35,7 +37,7 @@ typedef struct a A;
 
 //-------------------------------
 //char* 类型和 自定义类型需要重写 printFun
-#define TYPE_OF_STACK int
+#define TYPE_OF_STACK car*
 //-------------------------------
 
 /**
@@ -44,7 +46,7 @@ typedef struct a A;
 
 //-------------------------------
 //char* 类型和 自定义类型需要重写 printFun
-#define TYPE_OF_QUEUE int
+#define TYPE_OF_QUEUE car*
 //-------------------------------
 
 /**
@@ -86,7 +88,7 @@ typedef struct a A;
 //-------------------------------
 //char* 和自定义类型需重写 cmp和 printFun函数
 #define CAPACITY_OF_PRIORITY_QUEUE 10
-#define TYPE_OF_PRIORITY_QUEUE int
+#define TYPE_OF_PRIORITY_QUEUE Huffman*
 
 //-------------------------------
 //----------------------泛型声明区----------------------------

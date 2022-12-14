@@ -43,7 +43,7 @@ static void swim(PriorityQueue* queue, int index) {
 
 //在二叉堆中下沉
 static void sink(PriorityQueue* queue, int index) {
-    while (index*2 < queue->n) {//判断该节点是否有左子节点，因为是满二叉堆，所以必定先有左子节点
+    while (index*2 <= queue->n) {//判断该节点是否有左子节点，因为是满二叉堆，所以必定先有左子节点
         int minChildren = index*2;
         //如果存在右子节点，则取左右子节点中最小的一个进行交换
         if (minChildren < queue->n && less(queue, minChildren + 1, minChildren)) minChildren++;
