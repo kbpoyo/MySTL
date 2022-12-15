@@ -503,7 +503,7 @@ static eleTreeMap get(TreeMap* treeMap, keyTreeMap key) {
 /**
  * 返回最小值
  */
-static keyTreeMap min(TreeMap* treeMap) {
+static keyTreeMap min_key(TreeMap* treeMap) {
     if (isEmpty(treeMap)) return NULL;
     return minForNode(treeMap->root)->key;
 }
@@ -511,7 +511,7 @@ static keyTreeMap min(TreeMap* treeMap) {
 /**
  * 返回最大值
  */
-static keyTreeMap max(TreeMap* treeMap) {
+static keyTreeMap max_key(TreeMap* treeMap) {
     if (isEmpty(treeMap)) return NULL;
     return maxForNode(treeMap->root)->key;
 }
@@ -614,7 +614,7 @@ static keyTreeMap select(TreeMap* treeMap, int k) {
  */
 static EntryOfTree* toArr(TreeMap* treeMap) {
     EntryOfTree* arr = (EntryOfTree*) malloc(sizeof (EntryOfTree) * (treeMap->root->N + 1));
-    enArr(treeMap, treeMap->root, arr, min(treeMap), max(treeMap));
+    enArr(treeMap, treeMap->root, arr, min_key(treeMap), max_key(treeMap));
     return arr;
 }
 
@@ -784,8 +784,8 @@ TreeMap* iniTreeMap() {
 
     treeMap->get = get;
 
-    treeMap->min = min;
-    treeMap->max = max;
+    treeMap->min = min_key;
+    treeMap->max = max_key;
 
     treeMap->contains = contains;
 

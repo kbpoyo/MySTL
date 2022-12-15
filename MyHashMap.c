@@ -78,7 +78,7 @@ static hashNode* getPre(hash*myTable , keyType key) {
   return temp;
  }
 
- //得到节点数组
+ //得到节点数组, 通过类型强制转换，隐藏掉节点的后继
 static EntryOfHash* getNodes(hash* myTable) {
     if (myTable->getSize(myTable) == 0) return NULL;
 
