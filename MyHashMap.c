@@ -32,10 +32,10 @@ static int cmpOfValue(eleType ele1, eleType ele2) {
    long long e1 = (long long )ele1;
    long long e2 = (long long )ele2;
 
-     if (e1 == e2) return 0;
+     if (e1 > e2) return 1;
      if (e1 < e2) return -1;
 
-     return 1;
+     return 0;
  }
 
 //创建一个指向哈希节点的指针并将其返回 
@@ -174,7 +174,7 @@ static int add(hash*myTable , keyType key , eleType e) {
         while (node != NULL) {
             ptr = node->next;
 
-            if (myTable->cmpOfValue(node->e, ele)) {
+            if (myTable->cmpOfValue(node->e, ele) == 0) {
                 if(delByKey(myTable, node->key)) count++;
             }
 
@@ -207,7 +207,7 @@ static  int containsKey(hash* myTable, keyType key) {
  	for (i = 0; i < CAPACITY; i++) {
  		hashNode* ptr = myTable->list[i];
  		while (ptr != NULL) {
- 			if (myTable->cmpOfValue(ptr->e, ele)) return 1;
+ 			if (myTable->cmpOfValue(ptr->e, ele) == 0) return 1;
  			ptr = ptr->next;
 		 }
 	}
@@ -230,7 +230,7 @@ static eleType getValue(hash*myTable , keyType key) {
 		 
 	 }
  	else {
- 		printf("key not contained\n");
+ 		printErr("key not contained");
 	    return NULL;
 	}
 } 
